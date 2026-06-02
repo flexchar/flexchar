@@ -1,0 +1,92 @@
+<svg width="1200" height="360" viewBox="0 0 1200 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">flexchar profile banner</title>
+  <desc id="desc">A technical profile banner with layered grids, colorful code panels, and the text flexchar.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#09111F"/>
+      <stop offset="0.45" stop-color="#10261F"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="165" y1="82" x2="1034" y2="299" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38BDF8"/>
+      <stop offset="0.48" stop-color="#22C55E"/>
+      <stop offset="1" stop-color="#F97316"/>
+    </linearGradient>
+    <linearGradient id="soft" x1="0" y1="0" x2="0" y2="360" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF" stop-opacity="0.18"/>
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0.02"/>
+    </linearGradient>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M 34 0 L 0 0 0 34" stroke="#FFFFFF" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="20" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.13 0 0 0 0 0.77 0 0 0 0 0.39 0 0 0 0.75 0"/>
+      <feBlend in="SourceGraphic" mode="screen"/>
+    </filter>
+    <clipPath id="screenClip">
+      <rect x="686" y="67" width="374" height="226" rx="22"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="360" rx="34" fill="url(#bg)"/>
+  <rect width="1200" height="360" rx="34" fill="url(#grid)"/>
+  <path d="M85 276C219 160 358 122 502 162C659 205 732 87 887 91C1007 94 1075 160 1132 241" stroke="url(#accent)" stroke-width="2" stroke-opacity="0.5"/>
+  <path d="M42 318C214 196 346 239 490 246C658 253 706 156 871 163C1001 168 1074 237 1156 286" stroke="#38BDF8" stroke-width="1.5" stroke-opacity="0.22"/>
+
+  <circle cx="1000" cy="83" r="142" fill="#22C55E" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="230" cy="282" r="162" fill="#38BDF8" opacity="0.12" filter="url(#glow)"/>
+  <circle cx="785" cy="310" r="118" fill="#F97316" opacity="0.1" filter="url(#glow)"/>
+
+  <g transform="translate(82 78)">
+    <rect x="0" y="0" width="470" height="204" rx="24" fill="#07111F" fill-opacity="0.78" stroke="#FFFFFF" stroke-opacity="0.13"/>
+    <rect x="23" y="24" width="56" height="9" rx="4.5" fill="#38BDF8"/>
+    <rect x="91" y="24" width="38" height="9" rx="4.5" fill="#22C55E"/>
+    <rect x="141" y="24" width="74" height="9" rx="4.5" fill="#F97316"/>
+    <text x="24" y="82" fill="#E5F0FF" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="46" font-weight="800" letter-spacing="0">flexchar</text>
+    <text x="27" y="122" fill="#9FB0C7" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="18" font-weight="500" letter-spacing="0">AI engineering / product systems / useful tools</text>
+    <g transform="translate(25 151)">
+      <rect x="0" y="0" width="116" height="29" rx="14.5" fill="#22C55E" fill-opacity="0.14" stroke="#22C55E" stroke-opacity="0.45"/>
+      <text x="18" y="20" fill="#BFF7D2" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="700">shipping</text>
+      <rect x="130" y="0" width="116" height="29" rx="14.5" fill="#38BDF8" fill-opacity="0.14" stroke="#38BDF8" stroke-opacity="0.45"/>
+      <text x="151" y="20" fill="#C7EDFF" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="700">debugging</text>
+      <rect x="260" y="0" width="128" height="29" rx="14.5" fill="#F97316" fill-opacity="0.14" stroke="#F97316" stroke-opacity="0.45"/>
+      <text x="281" y="20" fill="#FED7AA" font-family="Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="13" font-weight="700">refining</text>
+    </g>
+  </g>
+
+  <g clip-path="url(#screenClip)">
+    <rect x="686" y="67" width="374" height="226" rx="22" fill="#0B1324" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <rect x="686" y="67" width="374" height="44" fill="url(#soft)"/>
+    <circle cx="716" cy="90" r="6" fill="#EF4444"/>
+    <circle cx="738" cy="90" r="6" fill="#F59E0B"/>
+    <circle cx="760" cy="90" r="6" fill="#22C55E"/>
+    <g font-family="SFMono-Regular, Consolas, Liberation Mono, monospace" font-size="16" font-weight="600">
+      <text x="718" y="143" fill="#60A5FA">const</text>
+      <text x="774" y="143" fill="#E5F0FF">work =</text>
+      <text x="846" y="143" fill="#86EFAC">"ship"</text>
+      <text x="718" y="177" fill="#60A5FA">while</text>
+      <text x="776" y="177" fill="#E5F0FF">(curious) {</text>
+      <text x="744" y="211" fill="#FBBF24">learn</text>
+      <text x="794" y="211" fill="#E5F0FF">();</text>
+      <text x="744" y="245" fill="#F97316">build</text>
+      <text x="794" y="245" fill="#E5F0FF">();</text>
+      <text x="718" y="279" fill="#E5F0FF">}</text>
+    </g>
+    <rect x="993" y="132" width="34" height="122" rx="17" fill="#22C55E"/>
+    <rect x="947" y="168" width="34" height="86" rx="17" fill="#38BDF8"/>
+    <rect x="901" y="198" width="34" height="56" rx="17" fill="#F97316"/>
+  </g>
+
+  <g opacity="0.88">
+    <rect x="603" y="120" width="9" height="9" rx="2" fill="#22C55E"/>
+    <rect x="627" y="120" width="9" height="9" rx="2" fill="#22C55E" opacity="0.55"/>
+    <rect x="651" y="120" width="9" height="9" rx="2" fill="#38BDF8" opacity="0.65"/>
+    <rect x="603" y="144" width="9" height="9" rx="2" fill="#38BDF8" opacity="0.72"/>
+    <rect x="627" y="144" width="9" height="9" rx="2" fill="#F97316" opacity="0.7"/>
+    <rect x="651" y="144" width="9" height="9" rx="2" fill="#22C55E"/>
+    <rect x="603" y="168" width="9" height="9" rx="2" fill="#22C55E" opacity="0.38"/>
+    <rect x="627" y="168" width="9" height="9" rx="2" fill="#38BDF8"/>
+    <rect x="651" y="168" width="9" height="9" rx="2" fill="#F97316" opacity="0.44"/>
+  </g>
+</svg>

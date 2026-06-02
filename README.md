@@ -28,7 +28,7 @@
       </p>
     </td>
     <td width="42%">
-      <img alt="GitHub stats" src="https://github-readme-stats.vercel.app/api?username=flexchar&show_icons=true&hide_border=true&bg_color=0d1117&title_color=22c55e&text_color=c9d1d9&icon_color=38bdf8&rank_icon=github" width="100%">
+      <img alt="GitHub stats" src="https://ghstats.dev/api/card?username=flexchar&hide_border=true&bg=0d1117&title_color=22c55e&text=c9d1d9&icon_color=38bdf8" width="100%">
     </td>
   </tr>
 </table>
@@ -36,7 +36,7 @@
 <table>
   <tr>
     <td width="50%">
-      <img alt="Most used languages" src="https://github-readme-stats.vercel.app/api/top-langs/?username=flexchar&layout=compact&hide_border=true&bg_color=0d1117&title_color=38bdf8&text_color=c9d1d9" width="100%">
+      <img alt="Most used languages" src="https://ghstats.dev/api/langs?username=flexchar&hide_border=true&bg=0d1117&title_color=38bdf8&text=c9d1d9&icon_color=f97316" width="100%">
     </td>
     <td width="50%">
       <img alt="Contribution streak" src="https://streak-stats.demolab.com?user=flexchar&hide_border=true&background=0d1117&ring=22c55e&fire=f97316&currStreakLabel=38bdf8&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d" width="100%">

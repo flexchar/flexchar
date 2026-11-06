@@ -1,51 +1,41 @@
-<p align="center">
-  <img src="./assets/profile-banner.svg" alt="Lukas - building things" width="100%" />
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.svg">
+  <img src="./assets/banner-light.svg" alt="Lukas Vanagas, AI engineer in Copenhagen" width="100%">
+</picture>
 
 <p align="center">
-  <a href="https://github.com/flexchar?tab=repositories"><img alt="Repositories" src="https://img.shields.io/badge/repos-open%20source-1f6feb?style=for-the-badge&labelColor=101418"></a>
-  <a href="https://github.com/flexchar"><img alt="GitHub" src="https://img.shields.io/badge/GitHub-flexchar-22c55e?style=for-the-badge&logo=github&logoColor=white&labelColor=101418"></a>
-  <img alt="Focus" src="https://img.shields.io/badge/focus-AI%20engineering-f97316?style=for-the-badge&labelColor=101418">
+  <a href="https://lukasnotes.dk">Lukas' Notes</a> ·
+  <a href="https://www.linkedin.com/in/luvan/">LinkedIn</a> ·
+  Copenhagen, DK
 </p>
 
-<table>
-  <tr>
-    <td width="58%">
-      <h3>Lukas</h3>
-      <p>
-        Builds practical software with a bias for simple interfaces, fast iteration,
-        and code that is easy to come back to later.
-      </p>
-      <p>
-        Moving from a decade of software engineering into AI engineering,
-        a shift that began in 2025 with Joe & The Juice. These days, more time goes into learning,
-        prototyping, and turning model capabilities into useful systems.
-      </p>
-      <p>
-        That includes catching up with the industry trends, listening to conference talks, 
-        prototyping MCP servers and workflow tooling, supporting Claude Enterprise adoption, 
-        and all the needed in the middle.
-      </p>
-    </td>
-    <td width="42%">
-      <img alt="GitHub stats" src="https://ghstats.dev/api/card?username=flexchar&hide_border=true&bg=0d1117&title_color=22c55e&text=c9d1d9&icon_color=38bdf8" width="100%">
-    </td>
-  </tr>
-</table>
+Ten years of building for the web, now an AI engineer at Joe & The Juice. I build MCP servers, agent workflows and the internal tools around them, and I help the company get real value out of Claude.
 
-<table>
-  <tr>
-    <td width="50%">
-      <img alt="Most used languages" src="https://ghstats.dev/api/langs?username=flexchar&hide_border=true&bg=0d1117&title_color=38bdf8&text=c9d1d9&icon_color=f97316" width="100%">
-    </td>
-    <td width="50%">
-      <img alt="Contribution streak" src="https://streak-stats.demolab.com?user=flexchar&hide_border=true&background=0d1117&ring=22c55e&fire=f97316&currStreakLabel=38bdf8&sideLabels=c9d1d9&currStreakNum=ffffff&sideNums=ffffff&dates=8b949e&stroke=30363d" width="100%">
-    </td>
-  </tr>
-</table>
+Most of that work lives in private repos, so this page counts it for you.
 
-<p align="center">
-  <img alt="Contribution graph" src="https://github-readme-activity-graph.vercel.app/graph?username=flexchar&bg_color=0d1117&color=c9d1d9&line=22c55e&point=38bdf8&area=true&area_color=22c55e&hide_border=true" width="100%">
-  <br>
-  <sub>Public contribution graphs show only part of the work: current AI engineering often lives in private experiments, notebooks, and product prototypes.</sub>
-</p>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/activity-dark.svg">
+  <img src="./assets/activity-light.svg" alt="My activity over the last 12 months, private repos included" width="100%">
+</picture>
+
+### Now
+
+- Shipping MCP servers and agent workflows at Joe & The Juice
+- Rolling out Claude Enterprise across the company
+- Building small tools on the side when something annoys me enough
+<!-- TODO: add Deco here with a one-line description and link -->
+
+### Recently shipped in public
+
+- [**browser-chooser**](https://github.com/flexchar/browser-chooser) - a macOS link chooser that opens each link in the right Chrome, Edge or Safari profile. Swift.
+- [**chemija-org**](https://github.com/flexchar/chemija-org) - Chemija.org rebuilt on Astro and Sanity, a Lithuanian chemistry information site.
+- [**turso-sync**](https://github.com/flexchar/turso-sync) - syncs a libSQL or Turso database to a file, packaged as a Docker image.
+- [**tiktoken-counter**](https://github.com/flexchar/tiktoken-counter) - OpenAI's tiktoken tokenizer as a standalone API.
+
+### Writing
+
+<!-- BLOG:START -->
+- [Latest posts on Lukas' Notes](https://lukasnotes.dk/archive)
+<!-- BLOG:END -->
+
+<sub>The activity card and the post list refresh every Monday from a GitHub Action in this repo.</sub>

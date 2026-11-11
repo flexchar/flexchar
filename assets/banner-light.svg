@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-labelledby="title">
-  <title id="title">Lukas Vanagas, AI engineer in Copenhagen</title>
+  <title id="title">AI engineer, shipping with models</title>
   <rect x="1" y="1" width="1198" height="298" rx="24" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
   <rect x="72" y="74" width="48" height="6" rx="3" fill="#116329"/>
   <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
-    <text x="72" y="150" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#1f2328">Lukas Vanagas</text>
-    <text x="72" y="205" font-size="34" font-weight="500" fill="#656d76">AI engineer in Copenhagen</text>
+    <text x="72" y="150" font-size="72" font-weight="700" letter-spacing="-1.5" fill="#1f2328">AI engineer</text>
+    <text x="72" y="205" font-size="34" font-weight="500" fill="#656d76">Shipping with models</text>
   </g>
   <g>
     <g fill="#d0d7de">

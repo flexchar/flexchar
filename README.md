@@ -1,6 +1,6 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/banner-dark.svg">
-  <img src="./assets/banner-light.svg" alt="Lukas Vanagas, AI engineer in Copenhagen" width="100%">
+  <img src="./assets/banner-light.svg" alt="AI engineer, shipping with models" width="100%">
 </picture>
 
 <p align="center">
@@ -11,11 +11,11 @@
 
 Ten years of building for the web, now an AI engineer at Joe & The Juice. I build MCP servers, agent workflows and the internal tools around them, and I help the company get real value out of Claude.
 
-Most of that work lives in private repos, so this page counts it for you.
+Most of that work lives in private repos and in long sessions with Claude Code and Codex, so this page counts both for you.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="./assets/activity-dark.svg">
-  <img src="./assets/activity-light.svg" alt="My activity over the last 12 months, private repos included" width="100%">
+  <img src="./assets/activity-light.svg" alt="My GitHub activity and AI token usage over the last 12 months, private repos included" width="100%">
 </picture>
 
 ### Now
@@ -35,7 +35,9 @@ Most of that work lives in private repos, so this page counts it for you.
 ### Writing
 
 <!-- BLOG:START -->
-- [Latest posts on Lukas' Notes](https://lukasnotes.dk/archive)
+- [Fixture post three & friends](https://example.com/three) <sub>Jun 2026</sub>
+- [Fixture post \[two\]](https://example.com/two) <sub>Apr 2026</sub>
+- [Fixture post one](https://example.com/one) <sub>Feb 2026</sub>
 <!-- BLOG:END -->
 
-<sub>The activity card and the post list refresh every Monday from a GitHub Action in this repo.</sub>
+<sub>Generated weekly on my own machine from GitHub and my local Claude Code and Codex logs. Totals only.</sub>

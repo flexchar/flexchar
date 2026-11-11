@@ -35,9 +35,7 @@ Most of that work lives in private repos and in long sessions with Claude Code a
 ### Writing
 
 <!-- BLOG:START -->
-- [Fixture post three & friends](https://example.com/three) <sub>Jun 2026</sub>
-- [Fixture post \[two\]](https://example.com/two) <sub>Apr 2026</sub>
-- [Fixture post one](https://example.com/one) <sub>Feb 2026</sub>
+- [Latest posts on Lukas' Notes](https://lukasnotes.dk/archive)
 <!-- BLOG:END -->
 
 <sub>Generated weekly on my own machine from GitHub and my local Claude Code and Codex logs. Totals only.</sub>

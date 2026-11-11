@@ -28,7 +28,7 @@ GitHub profile README for `flexchar`. Goal: look senior, calm and clearly active
 PROFILE_FIXTURES=scripts/fixtures bun run scripts/profile.ts
 ```
 
-This writes fake numbers into the activity SVGs and fake posts into README.md. Never commit that output: `git checkout README.md && rm assets/activity-*.svg` afterwards.
+This writes fake numbers into the activity SVGs and prints fake posts instead of touching README.md. Never commit the SVGs it produces: `rm assets/activity-*.svg` afterwards.
 
 ## Conventions
 

@@ -392,6 +392,8 @@ function updateReadme(posts: Post[]) {
   const lines = posts.map(
     (p) => `- [${mdEscape(p.title)}](${p.link}) <sub>${MONTHS[p.date.getUTCMonth()]} ${p.date.getUTCFullYear()}</sub>`,
   );
+  // Fixture posts are fake, so print them instead of touching the real README.
+  if (FIXTURES) return console.log(lines.join("\n"));
   const next = `${readme.slice(0, from + start.length)}\n${lines.join("\n")}\n${readme.slice(to)}`;
   if (next !== readme) writeFileSync(README, next);
 }

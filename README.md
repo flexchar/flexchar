@@ -35,7 +35,9 @@ Most of that work lives in private repos and in long sessions with Claude Code a
 ### Writing
 
 <!-- BLOG:START -->
-- [Latest posts on Lukas' Notes](https://lukasnotes.dk/archive)
+- [What are the storage and database limits of Claude Artifacts?](https://lukasnotes.dk/what-are-the-storage-and-database-limits-of-claude-artifacts) <sub>Nov 2026</sub>
+- [Cowork Sandbox -> ClaudeCode & Codex Laughing at It](https://lukasnotes.dk/cowork-sandbox-claudecode-codex-laughing-at-it) <sub>Oct 2026</sub>
+- [Postgres MCP & Cloudflare MCP Portal is a cheat-code!](https://lukasnotes.dk/postgres-mcp-cloudflare-mcp-portal-is-a-cheat-code) <sub>Jun 2026</sub>
 <!-- BLOG:END -->
 
 <sub>Generated weekly on my own machine from GitHub and my local Claude Code and Codex logs. Totals only.</sub>

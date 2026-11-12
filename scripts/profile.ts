@@ -164,12 +164,16 @@ function slices(sizes: Map<string, number>, top: number, color: (name: string) =
 function jsonlFiles(dir: string): string[] {
   if (!existsSync(dir)) return [];
   return readdirSync(dir, { recursive: true, encoding: "utf8" })
-    .filter((f) => f.endsWith(".jsonl"))
+    .filter((f) => f.endsWith(".jsonl") || f.endsWith(".jsonl.zst"))
     .map((f) => join(dir, f));
 }
 
+// Codex compresses older sessions to .jsonl.zst, which hold most of its history.
+const readLog = (file: string) =>
+  file.endsWith(".zst") ? new TextDecoder().decode(Bun.zstdDecompressSync(readFileSync(file))) : readFileSync(file, "utf8");
+
 function* jsonLines(file: string, mustContain: string): Generator<any> {
-  for (const line of readFileSync(file, "utf8").split("\n")) {
+  for (const line of readLog(file).split("\n")) {
     if (!line.includes(mustContain)) continue;
     try {
       yield JSON.parse(line);

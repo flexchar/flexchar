@@ -16,7 +16,7 @@ GitHub profile README for `flexchar`. Goal: look senior, calm and clearly active
 - GitHub token: `GH_STATS_TOKEN` if set, otherwise `gh auth token`. No secret is stored in the repo or in Actions.
 - GitHub data comes from the GraphQL API: owned repos for the language mix, the contribution calendar for the rest.
 - Claude Code usage: every `*.jsonl` under `$CLAUDE_CONFIG_DIR`, `~/.claude/projects` and `~/.config/claude/projects`. Claude Code writes one record per content block with the same usage repeated, so records are deduped by `message.id` plus `requestId`. Tokens processed = input + output + cache creation + cache read. `<synthetic>` messages are skipped.
-- Codex usage: every `*.jsonl` under `~/.codex/sessions` and `~/.codex/archived_sessions` (or `$CODEX_HOME`). `token_count` events carry running totals and can repeat, so only growth between events is counted. The model comes from the latest `turn_context`.
+- Codex usage: every `*.jsonl` and zstd-compressed `*.jsonl.zst` under `~/.codex/sessions` and `~/.codex/archived_sessions` (or `$CODEX_HOME`). `token_count` events carry running totals and can repeat, so only growth between events is counted. The model comes from the latest `turn_context`.
 - Models are grouped into families (Claude Opus, Claude Fable, GPT-5.6 and so on) by `modelFamily`.
 - Blog posts come from the Lukas' Notes RSS feed and replace the README between `<!-- BLOG:START -->` and `<!-- BLOG:END -->`.
 - Only totals are written. Repo names, project paths and prompts never reach the output.

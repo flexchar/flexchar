@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 702" width="800" height="702" role="img" aria-labelledby="t" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
-<title id="t">Last 12 months: 5,553 contributions, 86 commits, 6 pull requests across 6 repos, private included, 61.7B AI tokens processed, about $34K at API prices</title>
+<title id="t">Last 12 months: 5,579 contributions, 87 commits, 6 pull requests across 6 repos, private included, 61.7B AI tokens processed, about $34K at API prices</title>
 <rect x="1" y="1" width="798" height="700" rx="16" fill="#f6f8fa" stroke="#d0d7de" stroke-width="2"/>
 <text x="32" y="44" font-size="15" fill="#1f2328" font-weight="600">Last 12 months on GitHub</text>
 <text x="768" y="44" font-size="14" fill="#656d76" text-anchor="end">Private repos included (71% of mine)</text>
-<text x="32" y="98" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">5,553</text>
+<text x="32" y="98" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">5,579</text>
 <text x="32" y="122" font-size="15" fill="#656d76">contributions</text>
-<text x="216" y="98" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">86</text>
+<text x="216" y="98" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">87</text>
 <text x="216" y="122" font-size="15" fill="#656d76">commits</text>
 <text x="400" y="98" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">6</text>
 <text x="400" y="122" font-size="15" fill="#656d76">pull requests</text>
@@ -74,7 +74,7 @@
 <rect x="715.23" y="174.37" width="10.94" height="41.63" rx="2.00" fill="#2da44e" fill-opacity="0.81"/>
 <rect x="729.17" y="190.62" width="10.94" height="25.38" rx="2.00" fill="#2da44e" fill-opacity="0.67"/>
 <rect x="743.11" y="189.18" width="10.94" height="26.82" rx="2.00" fill="#2da44e" fill-opacity="0.68"/>
-<rect x="757.06" y="206.32" width="10.94" height="9.68" rx="2.00" fill="#2da44e" fill-opacity="0.53"/>
+<rect x="757.06" y="203.42" width="10.94" height="12.58" rx="2.00" fill="#2da44e" fill-opacity="0.56"/>
 <text x="32" y="280" font-size="15" fill="#1f2328" font-weight="600">Languages</text>
 <defs><clipPath id="langbar"><rect x="32" y="296" width="736" height="10" rx="5"/></clipPath></defs>
 <g clip-path="url(#langbar)"><rect x="32.00" y="296" width="288.89" height="10" fill="#4F5D95"/><rect x="322.89" y="296" width="119.24" height="10" fill="#3178c6"/><rect x="444.13" y="296" width="92.91" height="10" fill="#e34c26"/><rect x="539.04" y="296" width="82.43" height="10" fill="#f1e05a"/><rect x="623.47" y="296" width="51.15" height="10" fill="#41b883"/><rect x="676.62" y="296" width="45.39" height="10" fill="#663399"/><rect x="724.01" y="296" width="20.81" height="10" fill="#F05138"/><rect x="746.82" y="296" width="5.00" height="10" fill="#3572A5"/><rect x="753.81" y="296" width="14.19" height="10" fill="#8c959f"/></g>
@@ -101,16 +101,16 @@
 <text x="768" y="462" font-size="14" fill="#656d76" text-anchor="end">Claude Code and Codex, from my local logs</text>
 <text x="32" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">61.7B</text>
 <text x="32" y="540" font-size="15" fill="#656d76">tokens processed</text>
-<text x="179.2" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">178.5M</text>
+<text x="179.2" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">178.6M</text>
 <text x="179.2" y="540" font-size="15" fill="#656d76">tokens written</text>
 <text x="326.4" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">$34K</text>
 <text x="326.4" y="540" font-size="15" fill="#656d76">at API prices</text>
-<text x="473.6" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">8,611</text>
+<text x="473.6" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">8,612</text>
 <text x="473.6" y="540" font-size="15" fill="#656d76">sessions</text>
 <text x="620.8" y="516" font-size="34" fill="#1f2328" font-weight="700" letter-spacing="-0.5">168</text>
 <text x="620.8" y="540" font-size="15" fill="#656d76">active days</text>
 <defs><clipPath id="modelbar"><rect x="32" y="570" width="736" height="10" rx="5"/></clipPath></defs>
-<g clip-path="url(#modelbar)"><rect x="32.00" y="570" width="374.85" height="10" fill="#d97757"/><rect x="408.85" y="570" width="168.62" height="10" fill="#10a37f"/><rect x="579.47" y="570" width="59.05" height="10" fill="#3fb8af"/><rect x="640.52" y="570" width="40.69" height="10" fill="#a3492b"/><rect x="683.21" y="570" width="36.35" height="10" fill="#5b8def"/><rect x="721.57" y="570" width="46.43" height="10" fill="#8c959f"/></g>
+<g clip-path="url(#modelbar)"><rect x="32.00" y="570" width="375.05" height="10" fill="#d97757"/><rect x="409.05" y="570" width="168.52" height="10" fill="#10a37f"/><rect x="579.57" y="570" width="59.02" height="10" fill="#3fb8af"/><rect x="640.59" y="570" width="40.67" height="10" fill="#a3492b"/><rect x="683.26" y="570" width="36.33" height="10" fill="#5b8def"/><rect x="721.59" y="570" width="46.41" height="10" fill="#8c959f"/></g>
 <circle cx="37" cy="606" r="5" fill="#d97757"/>
 <text x="48" y="610" font-size="15" fill="#1f2328">Claude Opus <tspan fill="#656d76">51.2%</tspan></text>
 <circle cx="221" cy="606" r="5" fill="#10a37f"/>

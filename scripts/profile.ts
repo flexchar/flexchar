@@ -40,6 +40,40 @@ const MODEL_COLORS: Record<string, string> = {
   "Claude Haiku": "#f0c9a0",
 };
 const FALLBACK_COLORS = ["#10a37f", "#3fb8af", "#5b8def", "#a371f7", "#bf8700"];
+// Public API list prices in $ per million tokens: [input, short cache write, long cache write, cache read, output].
+// Claude: 5m and 1h writes (platform.claude.com/docs/en/about-claude/pricing). OpenAI: 30m and 12h writes, short-context tier
+// (developers.openai.com/api/docs/pricing). Checked 2026-11-12. Longest matching prefix wins; unlisted models count as $0.
+const PRICES: Record<string, [number, number, number, number, number]> = {
+  "claude-fable-5-2": [8, 10, 16, 0.2, 40],
+  "claude-mythos-5-2": [8, 10, 16, 0.2, 40],
+  "claude-fable-5-1": [10, 12.5, 20, 0.25, 50],
+  "claude-mythos-5-1": [10, 12.5, 20, 0.25, 50],
+  "claude-fable-5": [10, 12.5, 20, 1, 50],
+  "claude-mythos-5": [10, 12.5, 20, 1, 50],
+  "claude-opus-5-5": [4, 5, 8, 0.2, 20],
+  "claude-opus-5": [5, 6.25, 10, 0.5, 25],
+  "claude-opus-4": [5, 6.25, 10, 0.5, 25],
+  "claude-sonnet-5-5": [2, 2.5, 4, 0.1, 10],
+  "claude-sonnet-5": [2, 2.5, 4, 0.2, 10],
+  "claude-sonnet-4": [3, 3.75, 6, 0.3, 15],
+  "claude-haiku-5-5": [0.1, 0.125, 0.2, 0.01, 0.5],
+  "claude-haiku-4-5": [1, 1.25, 2, 0.1, 5],
+  "gpt-6.1-sol": [2, 2.5, 5, 0.1, 10],
+  "gpt-6.1-terra": [1, 1.25, 2.5, 0.05, 5],
+  "gpt-6-astra": [10, 12.5, 25, 1, 50],
+  "gpt-6-sol": [2, 2.5, 5, 0.2, 10],
+  "gpt-6-luna": [0.1, 0.125, 0.25, 0.01, 0.5],
+  "gpt-5.6-sol": [4, 5, 10, 0.4, 20],
+  "gpt-5.6-terra": [2, 2.5, 5, 0.2, 12],
+  "gpt-5.6-luna": [0.2, 0.25, 0.5, 0.02, 1.2],
+  "gpt-5.5": [5, 5, 5, 0.5, 30],
+  "gpt-5.4": [2.5, 2.5, 2.5, 0.25, 15],
+};
+const PRICE_KEYS = Object.keys(PRICES).sort((a, b) => b.length - a.length);
+const priceOf = (model: string) => {
+  const key = PRICE_KEYS.find((k) => model.toLowerCase().startsWith(k));
+  return key ? PRICES[key] : null;
+};
 
 type LanguageEdge = { size: number; node: { name: string; color: string | null } };
 type Repo = { isPrivate: boolean; isArchived: boolean; languages: { edges: LanguageEdge[] } };
@@ -63,7 +97,7 @@ type Stats = {
   weeks: { start: string; count: number }[];
   languages: Slice[];
 };
-type Usage = { tokens: number; output: number; sessions: number; activeDays: number; models: Slice[] };
+type Usage = { tokens: number; output: number; cost: number; unpriced: string[]; sessions: number; activeDays: number; models: Slice[] };
 type Post = { title: string; link: string; date: Date };
 
 const QUERY = `query($cursor: String) {
@@ -210,10 +244,17 @@ function collectUsage(): Usage {
   const seen = new Set<string>();
   let tokens = 0;
   let output = 0;
-  const count = (when: Date, model: string, total: number, out: number, session: string) => {
+  let cost = 0;
+  const unpriced = new Set<string>();
+  // parts: [input, short cache write, long cache write, cache read, output] token counts, priced per model.
+  const count = (when: Date, model: string, parts: number[], session: string) => {
+    const total = parts.reduce((a, b) => a + b, 0);
     if (when < SINCE || total <= 0) return;
     tokens += total;
-    output += out;
+    output += parts[4];
+    const price = priceOf(model);
+    if (price) cost += parts.reduce((sum, n, i) => sum + (n * price[i]) / 1e6, 0);
+    else unpriced.add(model);
     const family = modelFamily(model);
     byModel.set(family, (byModel.get(family) ?? 0) + total);
     days.add(when.toISOString().slice(0, 10));
@@ -229,30 +270,33 @@ function collectUsage(): Usage {
       const key = m.id ? `${m.id}:${o.requestId ?? ""}` : "";
       if (key && seen.has(key)) continue;
       if (key) seen.add(key);
-      const out = u.output_tokens ?? 0;
-      const total = (u.input_tokens ?? 0) + out + (u.cache_creation_input_tokens ?? 0) + (u.cache_read_input_tokens ?? 0);
-      count(new Date(o.timestamp), m.model, total, out, `claude:${o.sessionId}`);
+      const longWrite = u.cache_creation?.ephemeral_1h_input_tokens ?? 0;
+      const parts = [u.input_tokens, (u.cache_creation_input_tokens ?? 0) - longWrite, longWrite, u.cache_read_input_tokens, u.output_tokens];
+      count(new Date(o.timestamp), m.model, parts.map((n) => n ?? 0), `claude:${o.sessionId}`);
     }
   }
 
   // Codex reports running totals per session, sometimes repeated, so count the growth between events.
   for (const file of codexRoots.flatMap(jsonlFiles)) {
     let model = "Codex";
-    let prevTotal = 0;
-    let prevOutput = 0;
+    let prev = { total: 0, read: 0, write: 0, out: 0 };
     for (const o of jsonLines(file, '"type"')) {
       if (o.type === "turn_context" && o.payload?.model) model = o.payload.model;
       const t = o.type === "event_msg" && o.payload?.type === "token_count" ? o.payload.info?.total_token_usage : null;
-      if (!t || t.total_tokens <= prevTotal) continue;
-      count(new Date(o.timestamp), model, t.total_tokens - prevTotal, (t.output_tokens ?? 0) - prevOutput, `codex:${file}`);
-      prevTotal = t.total_tokens;
-      prevOutput = t.output_tokens ?? 0;
+      if (!t || t.total_tokens <= prev.total) continue;
+      // input_tokens includes cached reads and writes, so plain input is what remains.
+      const now = { total: t.total_tokens, read: t.cached_input_tokens ?? 0, write: t.cache_write_input_tokens ?? 0, out: t.output_tokens ?? 0 };
+      const read = now.read - prev.read;
+      const write = now.write - prev.write;
+      const out = now.out - prev.out;
+      count(new Date(o.timestamp), model, [now.total - prev.total - read - write - out, write, 0, read, out], `codex:${file}`);
+      prev = now;
     }
   }
 
   let fallback = 0;
   const colorFor = (name: string) => MODEL_COLORS[name] ?? FALLBACK_COLORS[fallback++ % FALLBACK_COLORS.length];
-  return { tokens, output, sessions: sessions.size, activeDays: days.size, models: slices(byModel, TOP_MODELS, colorFor) };
+  return { tokens, output, cost, unpriced: [...unpriced], sessions: sessions.size, activeDays: days.size, models: slices(byModel, TOP_MODELS, colorFor) };
 }
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -346,6 +390,7 @@ function renderCard(stats: Stats, usage: Usage, t: Theme, date: string): string 
     figures(y + 54, [
       [compact(usage.tokens), "tokens processed"],
       [compact(usage.output), "tokens written"],
+      [`$${compact(Math.round(usage.cost))}`, "at API prices"],
       [num(usage.sessions), "sessions"],
       [num(usage.activeDays), "active days"],
     ]);
@@ -353,10 +398,10 @@ function renderCard(stats: Stats, usage: Usage, t: Theme, date: string): string 
   }
 
   const footerY = y + 40;
-  parts.push(text(pad, footerY, 13, t.muted, `Totals only, no repo names. Updated ${date}.`));
+  parts.push(text(pad, footerY, 13, t.muted, `Totals only, no repo names. Cost estimated at public API list prices. Updated ${date}.`));
   const H = footerY + 26;
 
-  const ai = usage.tokens > 0 ? `, ${compact(usage.tokens)} AI tokens processed` : "";
+  const ai = usage.tokens > 0 ? `, ${compact(usage.tokens)} AI tokens processed, about $${compact(Math.round(usage.cost))} at API prices` : "";
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif">
 <title id="t">Last 12 months: ${num(stats.contributions)} contributions, ${num(stats.commits)} commits, ${num(stats.pullRequests)} pull requests across ${num(stats.repos)} repos, private included${ai}</title>
 <rect x="1" y="1" width="${W - 2}" height="${H - 2}" rx="16" fill="${t.surface}" stroke="${t.border}" stroke-width="2"/>
@@ -426,7 +471,8 @@ async function main() {
   const date = new Date().toISOString().slice(0, 10);
   CARDS.forEach((file, i) => writeCard(file, renderCard(stats, usage, Object.values(THEMES)[i], date)));
   console.log(`GitHub: ${stats.contributions} contributions, ${stats.commits} commits, ${stats.pullRequests} PRs, ${stats.repos} repos, ${stats.privateShare}% private`);
-  console.log(`AI: ${compact(usage.tokens)} tokens, ${compact(usage.output)} written, ${usage.sessions} sessions, ${usage.activeDays} days`);
+  console.log(`AI: ${compact(usage.tokens)} tokens, ${compact(usage.output)} written, $${num(Math.round(usage.cost))} at API prices, ${usage.sessions} sessions, ${usage.activeDays} days`);
+  if (usage.unpriced.length) console.log(`No price for: ${usage.unpriced.join(", ")}`);
   console.log(`Models: ${usage.models.map((m) => `${m.name} ${m.percent.toFixed(1)}%`).join(", ") || "none found"}`);
 
   // A feed hiccup should not block the stats update, so the old post list just stays.

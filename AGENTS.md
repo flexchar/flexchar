@@ -17,6 +17,7 @@ GitHub profile README for `flexchar`. Goal: look senior, calm and clearly active
 - GitHub data comes from the GraphQL API: owned repos for the language mix, the contribution calendar for the rest.
 - Claude Code usage: every `*.jsonl` under `$CLAUDE_CONFIG_DIR`, `~/.claude/projects` and `~/.config/claude/projects`. Claude Code writes one record per content block with the same usage repeated, so records are deduped by `message.id` plus `requestId`. Tokens processed = input + output + cache creation + cache read. `<synthetic>` messages are skipped.
 - Codex usage: every `*.jsonl` and zstd-compressed `*.jsonl.zst` under `~/.codex/sessions` and `~/.codex/archived_sessions` (or `$CODEX_HOME`). `token_count` events carry running totals and can repeat, so only growth between events is counted. The model comes from the latest `turn_context`.
+- Cost at API prices: tokens are priced per exact model from `PRICES` (input, short and long cache writes, cache reads, output, public list prices). Unlisted models count as $0 and are printed as "No price for". Refresh `PRICES` when new models show up.
 - Models are grouped into families (Claude Opus, Claude Fable, GPT-5.6 and so on) by `modelFamily`.
 - Blog posts come from the Lukas' Notes RSS feed and replace the README between `<!-- BLOG:START -->` and `<!-- BLOG:END -->`.
 - Only totals are written. Repo names, project paths and prompts never reach the output.

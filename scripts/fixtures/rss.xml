@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel><title>Fixture feed</title>
+<item><title><![CDATA[Fixture post three & friends]]></title><link>https://example.com/three</link><pubDate>Fri, 26 Jun 2026 10:00:00 GMT</pubDate></item>
+<item><title><![CDATA[Fixture post one]]></title><link>https://example.com/one</link><pubDate>Mon, 02 Feb 2026 10:00:00 GMT</pubDate></item>
+<item><title>Fixture post [two]</title><link>https://example.com/two</link><pubDate>Tue, 14 Apr 2026 10:00:00 GMT</pubDate></item>
+<item><title><![CDATA[Fixture post zero, should be cut]]></title><link>https://example.com/zero</link><pubDate>Thu, 01 Jan 2026 10:00:00 GMT</pubDate></item>
+</channel></rss>
